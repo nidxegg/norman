@@ -1,0 +1,19 @@
+<button onclick="myFunction1()">Сортировать по алфавиту</button>
+<button onclick="myFunction2()">Сортировать по числам</button>
+
+<p id="demo"></p>
+<input type="text">
+<script>
+    let points = document.querySelector('input');
+var points = document.querySelector('input');
+document.getElementById("demo").innerHTML = points;
+
+function myFunction1() {
+    points.sort();
+    document.getElementById("demo").innerHTML = points;
+}
+function myFunction2() {
+    points.sort(function(a, b){return a - b});
+    document.getElementById("demo").innerHTML = points;
+}
+</script>
