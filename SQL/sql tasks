@@ -1,0 +1,53 @@
+--Вывести список сотрудников, получающих максимальную заработную плату в своем отделе
+
+
+SELECT employee.NAME,  MAX(employee.SALARY), department.name FROM employee
+left join department on department.id = employee.department_id
+group by department_id
+
+--Вывести список ID отделов, количество сотрудников в которых не превышает 3 человек
+
+SELECT  department_id from employee
+GROUP BY `department_id`
+HAVING MAX(`department_id`) < 4
+
+--Найти список ID отделов с максимальной суммарной зарплатой сотрудников
+
+SELECT department_id, sum(salary) as maxsalary from employee
+group by department_id
+order by salary desc
+limit 1
+
+--Добавить в БД новый отдел
+
+ INSERT INTO `department` (`id`,`name`) VALUES
+('5','Маркетинг');
+
+----Добавить в новый отдел троих новых сотрудников и одного руководителя (с учетом заполнения всех полей)
+
+INSERT INTO `employee` (`id`,`department_id`,`chief_id`,`name`,`salary`) VALUES
+('','5','1','Кувалев','13400');
+ INSERT INTO `employee` (`id`,`department_id`,`chief_id`,`name`,`salary`) VALUES
+('','5','0','Коневский','2220');
+ INSERT INTO `employee` (`id`,`department_id`,`chief_id`,`name`,`salary`) VALUES
+('','51','0','Харутян','100');
+ INSERT INTO `employee` (`id`,`department_id`,`chief_id`,`name`,`salary`) VALUES
+(4','5','0','Колышев','440');
+
+
+--Удалить отдел и всех сотрудников, привязанных к этому отделу. Вообще при создании   можно указать каскадное удаление. но я не указывал поэтому в два запроса. 
+
+delete FROM department
+WHERE id = '4'
+
+delete FROM employee
+WHERE department.id = '4'
+
+--Обновить ID любого отдела так, чтобы “не потерять” работающих в нем сотрудников
+UPDATE department
+SET id = 6 
+WHERE id = 4
+
+UPDATE employee
+SET department_id = 6 
+WHERE department_id = 4
