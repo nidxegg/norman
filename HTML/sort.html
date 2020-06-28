@@ -1,19 +1,18 @@
-<button onclick="myFunction1()">Сортировать по алфавиту</button>
-<button onclick="myFunction2()">Сортировать по числам</button>
+<button onclick="sortAz()">Сортировать по возрастанию</button>
+<button onclick="sortZa()">Сортировать по убыванию</button>
 
 <p id="demo"></p>
-<input type="text">
+
 <script>
-    let points = document.querySelector('input');
-var points = document.querySelector('input');
+var points = [40, 100, 1, 5, 25, 10];
 document.getElementById("demo").innerHTML = points;
 
-function myFunction1() {
-    points.sort();
-    document.getElementById("demo").innerHTML = points;
-}
-function myFunction2() {
+function sortAz() {
     points.sort(function(a, b){return a - b});
     document.getElementById("demo").innerHTML = points;
 }
-</script>
+function sortZa() {
+    points.sort(function(a, b){return  b - a});
+    document.getElementById("demo").innerHTML = points;
+}
+</script> 

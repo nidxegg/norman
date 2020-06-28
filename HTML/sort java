@@ -1,0 +1,13 @@
+var arr = [1, 22, 522 , 62 , 4 , 44 , 75, 96, 4, 23, 32, 21, 8, 18, 30];
+
+arr.sort(function (a, b, c) {
+    if (c == 1){
+       return a - b; 
+    }
+    else{
+        return b - a;
+    }
+    r
+});
+
+console.log(arr);
